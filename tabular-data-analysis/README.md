@@ -9,7 +9,9 @@ In this demo, we explore two innovative methods for querying tabular data, each 
 
 Both methods are implemented using [Llama Packs](https://github.com/run-llama/llama-hub/tree/main/llama_hub/llama_packs/tables), a versatile and community-driven collection of prepackaged modules designed to enhance LLM applications.  
 
-We've brought these approaches to life through an intuitive WebUI, resembling a chatbot interface, where users can interact with either ChatGPT or local models to execute their data queries. This setup not only showcases the practical applications of these theoretical approaches but also provides an accessible platform for users to experience the cutting-edge in tabular data querying.
+We've brought these approaches to life through an intuitive WebUI, resembling a chatbot interface, where users can interact with either ChatGPT or local models to execute their data queries. To enhance local model deployment, we utilize LocalAI to initiate docker containers hosting local models, while providing an OpenAI-compatible API for efficient inference.
+
+This setup not only showcases the practical applications of these theoretical approaches but also provides an accessible platform for users to experience the cutting-edge in tabular data querying.
 
 ## Prerequisites
 Before diving into this demo, please ensure that your system meets the following prerequisites:
