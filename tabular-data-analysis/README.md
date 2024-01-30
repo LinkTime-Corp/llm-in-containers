@@ -15,7 +15,7 @@ We've brought these approaches to life through an intuitive WebUI, resembling a 
 Before diving into this demo, please ensure that your system meets the following prerequisites:
 1. **Operating System**: The demo is compatible with Mac and Linux operating systems.
 
-2. **Docker and wget**: It's required to have `docker` and `wget` installed on your system. Specifically, we have tested this demo with Docker Engine Community version 25.0.1. 
+2. **Docker and wget**: It's required to have `docker`, `docker-compose` and `wget` installed on your system. Specifically, we have tested this demo with Docker Engine Community version 25.0.1. 
 
 3. **OpenAI API Key for ChatGPT**: If you wish to use the ChatGPT functionality within this demo, an OpenAI API key is required. Please note that usage of this API is subject to OpenAI's pricing and usage policies.
 
@@ -33,12 +33,12 @@ source download-models.sh
 ```
 4. Launch the demo:
 ```
-docker-compose -f docker-compose-lit.yaml up -d
+source run.sh
 ```
 5. Visit the UI at http://localhost:8501. On the UI, you can choose either "ChatGPT" or "Local_LLM" (the local model you downloaded) to query the tabular data.
 6. Shutdown the demo.
 ```
-docker-compose -f docker-compose-lit.yaml down
+source shutdown.sh
 ```
 
 ### Running the demo on GPU
@@ -50,10 +50,10 @@ cd llm-in-containers/tabular-data-analysis
 2. Insert your OpenAI API Key into conf/config.json for "OPENAI_API_KEY". 
 3. Launch the demo:
 ```
-docker-compose up -d
+source run.sh -gpu
 ```
 4. Visit the UI at http://localhost:8501. On the UI, you can choose either "ChatGPT" or "Local_LLM" (the default local model "mistral-openorca" is configured to run on GPU) to query the tabular data.
 5. Shutdown the demo.
 ```
-docker-compose down
+source shutdown.sh -gpu
 ```

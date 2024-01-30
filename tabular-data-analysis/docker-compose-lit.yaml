@@ -9,7 +9,7 @@ services:
     ports:
       - "10080:8080"
   tabular-data-analysis:
-    image: sunysb/tabular-data-analysis:lit-1.0
+    image: tabular-data-analysis:lit-1.0
     volumes:
       - $PWD/conf:/app/conf
     ports:
