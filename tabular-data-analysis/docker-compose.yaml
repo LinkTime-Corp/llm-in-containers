@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  localai:
+    image: localai/localai:v2.6.1-cublas-cuda12-core
+    command: mistral-openorca
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    ports:
+      - "10080:8080"
+  tabular-data-analysis:
+    image: tabular-data-analysis:1.0
+    volumes:
+      - $PWD/conf:/app/conf
+    ports:
+      - "8501:8501"

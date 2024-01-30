@@ -1,0 +1,20 @@
+{
+    "CPU_Only": true,
+    "SHOW_TRACE_ON_UI": true,
+    "API_BASE": "http://localai:8080/v1",
+    "API_KEY": "anykey",
+    "OPENAI_API_KEY": "your key",
+    "OPENAI_API_MODEL": "gpt-4-1106-preview",
+    "INPUT_DIR": "cvs-input",
+    "MODELS_DIR": "models",
+    "models": [
+        {
+            "type": "CPU_Only",
+            "name": "mistral-7b-instruct-v0.2.Q6_K.gguf"
+        },
+        {
+            "type": "GPU_Enabled",
+            "name": "mistral-openorca"
+        }
+    ]
+}

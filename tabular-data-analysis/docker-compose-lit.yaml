@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  localai:
+    image: localai/localai:v2.6.1-ffmpeg-core
+    command: --models-path /models --context-size 4096 --threads 2
+    volumes:
+      - $PWD/models:/models
+    ports:
+      - "10080:8080"
+  tabular-data-analysis:
+    image: tabular-data-analysis:lit-1.0
+    volumes:
+      - $PWD/conf:/app/conf
+    ports:
+      - "8501:8501"
