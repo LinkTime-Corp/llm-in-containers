@@ -1,7 +1,7 @@
 import llama_index
 import json, os, time
 from chain_of_table_pack.base import ChainOfTableQueryEngine, serialize_table
-from constants import TEXT2SQL_ENGINE, CHAINOFTABLE_ENGINE, GPT_LLM, LOCAL_LLM
+from constants import MIXSC_ENGINE, CHAINOFTABLE_ENGINE, GPT_LLM, LOCAL_LLM
 from llama_index import ServiceContext
 from llama_index import set_global_service_context
 from llama_index.embeddings import OpenAIEmbedding
@@ -63,7 +63,7 @@ class QueryEngineWrapper:
             text_paths = 1
             symbolic_paths = 1
 
-        if query_engine_type == TEXT2SQL_ENGINE:
+        if query_engine_type == MIXSC_ENGINE:
             query_engine = MixSelfConsistencyQueryEngine(
                             df=table, 
                             llm=chosen_llm, 

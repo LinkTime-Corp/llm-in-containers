@@ -3,7 +3,7 @@ version: '3.8'
 services:
   localai:
     image: localai/localai:v2.6.1-cublas-cuda12-core
-    command: mistral-openorca
+    command: ${MODEL_NAME}
     deploy:
       resources:
         reservations:

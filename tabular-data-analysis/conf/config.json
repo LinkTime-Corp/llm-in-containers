@@ -10,11 +10,13 @@
     "models": [
         {
             "type": "CPU_Only",
-            "name": "mistral-7b-instruct-v0.2.Q6_K.gguf"
+            "name": "mistral-7b-instruct-v0.2.Q6_K.gguf",
+            "url":  "https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF/resolve/main/mistral-7b-instruct-v0.2.Q6_K.gguf" 
         },
         {
             "type": "GPU_Enabled",
-            "name": "mistral-openorca"
+            "name": "mistral-openorca",
+            "url":  "https://huggingface.co/TheBloke/Mistral-7B-OpenOrca-GGUF"  
         }
     ]
 }
