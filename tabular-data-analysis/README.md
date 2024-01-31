@@ -17,7 +17,7 @@ This setup not only showcases the practical applications of these theoretical ap
 Before diving into this demo, please ensure that your system meets the following prerequisites:
 1. **Operating System**: The demo is compatible with Mac and Linux operating systems.
 
-2. **Docker and wget**: It's required to have `docker`, `docker-compose` and `wget` installed on your system. Specifically, we have tested this demo with Docker Engine Community version 25.0.1. 
+2. **Docker and wget**: It's required to have `docker`, `docker-compose` and `wget` installed on your system. Specifically, we have tested this demo with Docker Engine Community version 25.0.1 on Linux. 
 
 3. **OpenAI API Key for ChatGPT**: If you wish to use the ChatGPT functionality within this demo, an OpenAI API key is required. Please note that usage of this API is subject to OpenAI's pricing and usage policies.
 

@@ -1,5 +1,5 @@
 import llama_index
-import json, os
+import json, os, time
 from chain_of_table_pack.base import ChainOfTableQueryEngine, serialize_table
 from constants import TEXT2SQL_ENGINE, CHAINOFTABLE_ENGINE, GPT_LLM, LOCAL_LLM
 from llama_index import ServiceContext
@@ -80,5 +80,11 @@ class QueryEngineWrapper:
 
     def process_query(self, question, table, llm_type, query_engine_type):
         query_engine = self.get_query_engine(table, llm_type, query_engine_type)
+    
+        start_time = time.time()  # Start time recording
         response = query_engine.query(question)
-        return response
+        end_time = time.time()  # End time recording
+        time_spent = end_time - start_time  # Calculate duration
+        # add time spent to the end of the response
+        final_response = response.__str__() + "\nTime spent: {:.2f} seconds".format(time_spent)
+        return final_response
