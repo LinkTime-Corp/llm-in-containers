@@ -98,7 +98,7 @@ if uploaded_file is not None:
     st.dataframe(table.head(5))
 
     llm_type = st.selectbox("LLM Type", [GPT_LLM, LOCAL_LLM])
-    query_engine_type = st.selectbox("Query Engine", [MIXSC_ENGINE_ENGINE, CHAINOFTABLE_ENGINE])
+    query_engine_type = st.selectbox("Query Engine", [MIXSC_ENGINE, CHAINOFTABLE_ENGINE])
     question = st.text_input("Question", "")
     if question and st.button("Query"):
         (response, captured_output_str) = process_query(question, table, llm_type, query_engine_type)
