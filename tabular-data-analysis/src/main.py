@@ -2,30 +2,6 @@ import pandas as pd
 import streamlit as st
 import json, io, os, shutil, sys, traceback
 from constants import MIXSC_ENGINE, CHAINOFTABLE_ENGINE, GPT_LLM, LOCAL_LLM
-from llama_index.llama_pack import download_llama_pack
-
-def init_llama_packs():
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    pack_list = [
-        { 
-            "name": "ChainOfTablePack", 
-            "dir":  "chain_of_table_pack"
-        },{
-            "name": "MixSelfConsistencyPack",
-            "dir": "mix_self_consistency_pack"
-        }
-    ]
-    for pack in pack_list:
-        pack_dir  = pack["dir"]
-        pack_name = pack["name"]
-        pack_path = f"{dir_path}/{pack_dir}"
-        if not os.path.exists(pack_path):
-            download_llama_pack(
-                pack_name,
-                pack_path,
-                skip_load=True,
-            )
-init_llama_packs()
 from backend import QueryEngineWrapper
 
 script_dir = os.path.dirname(os.path.realpath(__file__))

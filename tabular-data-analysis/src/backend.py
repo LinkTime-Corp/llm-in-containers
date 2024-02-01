@@ -1,12 +1,16 @@
 import llama_index
 import json, os, time
-from chain_of_table_pack.base import ChainOfTableQueryEngine, serialize_table
 from constants import MIXSC_ENGINE, CHAINOFTABLE_ENGINE, GPT_LLM, LOCAL_LLM
 from llama_index import ServiceContext
 from llama_index import set_global_service_context
 from llama_index.embeddings import OpenAIEmbedding
 from llama_index.llms import OpenAILike, OpenAI
-from mix_self_consistency_pack.base import MixSelfConsistencyQueryEngine
+from llama_hub.llama_packs.tables.mix_self_consistency.base import (
+    MixSelfConsistencyQueryEngine
+) 
+from llama_hub.llama_packs.tables.chain_of_table.base import (
+    ChainOfTableQueryEngine, serialize_table
+)
 
 script_dir = os.path.dirname(os.path.realpath(__file__))
 upper_dir = os.path.dirname(script_dir)
