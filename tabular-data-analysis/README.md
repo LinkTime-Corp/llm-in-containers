@@ -9,24 +9,52 @@ In this demo, we explore two innovative methods for querying tabular data, each 
 
 Both methods are implemented using [Llama Packs](https://github.com/run-llama/llama-hub/tree/main/llama_hub/llama_packs/tables), a versatile and community-driven collection of prepackaged modules designed to enhance LLM applications.  
 
-We've brought these approaches to life through an intuitive WebUI, resembling a chatbot interface, where users can interact with either ChatGPT or local models to execute their data queries. This setup not only showcases the practical applications of these theoretical approaches but also provides an accessible platform for users to experience the cutting-edge in tabular data querying.
+We've brought these approaches to life through an intuitive WebUI, resembling a chatbot interface, where users can interact with either ChatGPT or local models to execute their data queries. To enhance local model deployment, we utilize LocalAI to initiate docker containers hosting local models, while providing an OpenAI-compatible API for efficient inference.
+
+This setup not only showcases the practical applications of these theoretical approaches but also provides an accessible platform for users to experience the cutting-edge in tabular data querying.
 
 ## Prerequisites
 Before diving into this demo, please ensure that your system meets the following prerequisites:
-1. **Operating System**: The demo is compatible with Mac and Linux operating systems.
+1. **Operating System**: The demo is compatible with Linux operating systems.
 
-2. **Docker and wget**: It's required to have `docker`, `docker-compose` and `wget` installed on your system. Specifically, we have tested this demo with Docker Engine Community version 25.0.1. 
+2. **Docker and wget**: It's required to have `docker`, `docker-compose` and `wget` installed on your system. Specifically, we have tested this demo with Docker Engine Community version 25.0.1 on Linux. 
 
 3. **OpenAI API Key for ChatGPT**: If you wish to use the ChatGPT functionality within this demo, an OpenAI API key is required. Please note that usage of this API is subject to OpenAI's pricing and usage policies.
 
 ## Quick Start
+### Setup environment on AWS
+We suggest the following AWS EC2 instances as the environment to run the demo:
+ * OS: Ubuntu 22.04 LTS
+ * CPU instance: c5.2xlarge with 8 vCPUs and 16GB of RAM, $0.34 per hour as of 02/01/2024.
+ * GPU instance: g5.xlarge with  NVIDIA A10G GPU, 4 vCPUs, and 16GB of RAM,  $1.006 per hour as of 02/01/2024.
+  
+By default, AWS EC2 creates a 'ubuntu' user and we run all the setup scripts under this user:
+```
+git clone https://github.com/LinkTime-Corp/llm-in-containers.git
+
+cd llm-in-containers/env-setup/aws/ubuntu-22.04
+
+source docker-install.sh
+```
+If you want to run this demo on GPU instances, do the following:
+```
+source nvidia-driver-install.sh
+```
+After the reboot is done, go back to the 'llm-in-containers/env-setup/aws/ubuntu-22.04' directory and run:
+```
+source nvidia-container-install.sh
+
+docker run -it --rm --gpus all ubuntu nvidia-smi
+```
+If everything is installed successfully, the final command will display Nvidia GPU and driver details.
+
 ### Running the demo on CPU
 1. Start by cloning this repo to your local machine:
 ```
 git clone https://github.com/LinkTime-Corp/llm-in-containers.git
 cd llm-in-containers/tabular-data-analysis
 ```
-2. Insert your OpenAI API Key into conf/config.json for "OPENAI_API_KEY".
+2. Insert your OpenAI API Key into conf/config.json for "OPENAI_API_KEY". This step can be skipped if you don't want to evaluate against the OpenAI backend.
 3. Download local model:
 ```
 source download-models.sh

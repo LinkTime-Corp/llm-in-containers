@@ -1,12 +1,16 @@
 import llama_index
-import json, os
-from chain_of_table_pack.base import ChainOfTableQueryEngine, serialize_table
-from constants import TEXT2SQL_ENGINE, CHAINOFTABLE_ENGINE, GPT_LLM, LOCAL_LLM
+import json, os, time
+from constants import MIXSC_ENGINE, CHAINOFTABLE_ENGINE, GPT_LLM, LOCAL_LLM
 from llama_index import ServiceContext
 from llama_index import set_global_service_context
 from llama_index.embeddings import OpenAIEmbedding
 from llama_index.llms import OpenAILike, OpenAI
-from mix_self_consistency_pack.base import MixSelfConsistencyQueryEngine
+from llama_hub.llama_packs.tables.mix_self_consistency.base import (
+    MixSelfConsistencyQueryEngine
+) 
+from llama_hub.llama_packs.tables.chain_of_table.base import (
+    ChainOfTableQueryEngine, serialize_table
+)
 
 script_dir = os.path.dirname(os.path.realpath(__file__))
 upper_dir = os.path.dirname(script_dir)
@@ -63,7 +67,7 @@ class QueryEngineWrapper:
             text_paths = 1
             symbolic_paths = 1
 
-        if query_engine_type == TEXT2SQL_ENGINE:
+        if query_engine_type == MIXSC_ENGINE:
             query_engine = MixSelfConsistencyQueryEngine(
                             df=table, 
                             llm=chosen_llm, 
@@ -80,5 +84,11 @@ class QueryEngineWrapper:
 
     def process_query(self, question, table, llm_type, query_engine_type):
         query_engine = self.get_query_engine(table, llm_type, query_engine_type)
+    
+        start_time = time.time()  # Start time recording
         response = query_engine.query(question)
-        return response
+        end_time = time.time()  # End time recording
+        time_spent = end_time - start_time  # Calculate duration
+        # add time spent to the end of the response
+        final_response = response.__str__() + "\nTime spent: {:.2f} seconds".format(time_spent)
+        return final_response

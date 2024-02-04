@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e -u
 
 echo "Shutting down app..."
 if [ "$1" == "-gpu" ]; then

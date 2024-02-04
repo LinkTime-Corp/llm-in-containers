@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+# directories created during the runtime
+LocalAI/
+models/
+
 # Distribution / packaging
 .Python
 build/
