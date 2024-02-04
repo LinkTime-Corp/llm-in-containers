@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e -u
 
 source nvidia-container-runtime-script.sh
 

@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e -u
 
 CONFIG_FILE="conf/config.json"
 

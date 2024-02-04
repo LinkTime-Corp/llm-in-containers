@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e -u
+
 sudo apt-get update
 
 sudo apt install -y ubuntu-drivers-common
