@@ -1,0 +1,25 @@
+{
+    "CPU_Only": true,
+    "SHOW_TRACE_ON_UI": true,
+    "API_BASE": "http://ollama:11434/v1/",
+    "API_KEY": "anykey",
+    "OPENAI_API_KEY": "your key",
+    "OPENAI_API_MODEL": "gpt-4-1106-preview",
+    "database": {
+        "host": "mysql",
+        "user": "root",
+        "password": "123456",
+        "db": "classicmodels",
+        "port": 3306
+    },
+    "models": [
+        {
+            "type": "CPU_Only",
+            "name": "sqlcoder:15b-q6_K"
+        },
+        {
+            "type": "GPU_Enabled",
+            "name": "sqlcoder:15b-q8_0"
+        }
+    ]
+}
