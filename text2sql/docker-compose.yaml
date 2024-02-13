@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  ollama:
+    image: ollama/ollama:0.1.24
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./ollama:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+  mysql:
+    image: mysql:8.3.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data:/var/lib/mysql
+  text2sql:
+    image: text2sql:1.0
+    volumes:
+      - $PWD/conf:/app/conf
+    ports:
+      - "8501:8501"
