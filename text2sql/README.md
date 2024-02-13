@@ -4,9 +4,9 @@ This demo showcases querying databases through Text2SQL technology, leveraging t
 
 ## Prerequisites
 Before diving into this demo, please ensure that your system meets the following prerequisites:
-1. **Operating System**: The demo is compatible with Linux operating systems.
+1. **Operating System**: The demo is compatible with Linux operating systems and tested on Ubuntu 22.04.
 
-2. **Docker, unzip and wget**: It's required to have `docker`, `docker-compose`, `unzip` and `wget` installed on your system. Specifically, we have tested this demo with Docker Engine Community version 25.0.1 on Linux. 
+2. **Docker, unzip and wget**: It's required to have `docker` and `docker-compose` installed on your system. Specifically, we have tested this demo with Docker Engine Community version 25.0.1 on Linux. 
 
 3. **OpenAI API Key for ChatGPT**: If you wish to use the ChatGPT functionality within this demo, an OpenAI API key is required. Please note that usage of this API is subject to OpenAI's pricing and usage policies.
 
@@ -23,43 +23,43 @@ git clone https://github.com/LinkTime-Corp/llm-in-containers.git
 
 cd llm-in-containers/env-setup/aws/ubuntu-22.04
 
-source docker-install.sh
+bash docker-install.sh
 ```
 To enable Docker commands for the 'ubuntu' user, please log out. For running this demo on GPU instances, proceed as follows:
 ```
-source nvidia-driver-install.sh
+bash nvidia-driver-install.sh
 ```
 After the reboot is done, go back to the 'llm-in-containers/env-setup/aws/ubuntu-22.04' directory and run:
 ```
-source nvidia-container-install.sh
+bash nvidia-container-install.sh
 
 docker run -it --rm --gpus all ubuntu nvidia-smi
 ```
 If everything is installed successfully, the final command will display Nvidia GPU and driver details.
 
 ### Running the demo on CPU
-1. Start by cloning this repo to your local machine:
+1. Start by cloning this repo to your EC2 CPU instance:
 ```
 git clone https://github.com/LinkTime-Corp/llm-in-containers.git
 cd llm-in-containers/text2sql
 ```
 2. Insert your OpenAI API Key into conf/config.json for "OPENAI_API_KEY". This step can be skipped if you don't want to evaluate against the OpenAI backend.
-3. Launch the demo:
+3. Launch the demo. If everything runs smoothly, the last command in run.sh should show three containers actively running.
 ```
-source run.sh
+bash run.sh
 ```
-4. Download the sample data and load it into MySQL:
+4. Load the sample data into MySQL:
 ```
-source download_data.sh
+bash load_data.sh
 ```
-5. Visit the UI at http://localhost:8501. On the UI, you can choose either "ChatGPT" or "Local_LLM" (the default local model "sqlcoder:15b-q6_K" is configured to run on CPU) to query the MySQL database.
+5. Visit the UI at http://{IP of EC2 CPU instance}:8501. On the UI, you can choose either "ChatGPT" or "Local_LLM" (the default local model "sqlcoder:15b-q6_K" is configured to run on CPU) to query the MySQL database.
 6. Shutdown the demo.
 ```
-source shutdown.sh
+bash shutdown.sh
 ```
 
 ### Running the demo on GPU
-1. Start by cloning this repo to your local machine:
+1. Start by cloning this repo to your EC2 GPU instance:
 ```
 git clone https://github.com/LinkTime-Corp/llm-in-containers.git
 cd llm-in-containers/text2sql
@@ -67,14 +67,14 @@ cd llm-in-containers/text2sql
 2. Insert your OpenAI API Key into conf/config.json for "OPENAI_API_KEY". 
 3. Launch the demo:
 ```
-source run.sh -gpu
+bash run.sh -gpu
 ```
-4. Download the sample data and load it into MySQL:
+4. Load the sample data into MySQL:
 ```
-source download_data.sh
+bash load_data.sh
 ```
-5. Visit the UI at http://localhost:8501. On the UI, you can choose either "ChatGPT" or "Local_LLM" (the default local model "sqlcoder:15b-q8_0" is configured to run on GPU) to query the tabular data.
+5. Visit the UI at http://{IP of EC2 GPU instance}:8501. On the UI, you can choose either "ChatGPT" or "Local_LLM" (the default local model "sqlcoder:15b-q8_0" is configured to run on GPU) to query the tabular data.
 6. Shutdown the demo.
 ```
-source shutdown.sh -gpu
+bash shutdown.sh -gpu
 ```

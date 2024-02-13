@@ -9,4 +9,3 @@ else
         docker-compose down
     fi
 fi
-set +e +u

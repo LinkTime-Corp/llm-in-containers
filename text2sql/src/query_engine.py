@@ -80,6 +80,6 @@ class SQLEngineWrapper:
 
 if __name__ == "__main__":
     sql_agent = SQLEngineWrapper()
-    question = "where is address of the office in San Francisco?"
+    question = "Where is the office in San Francisco?"
     response = sql_agent.process_query(question, LOCAL_LLM)
     print(response)

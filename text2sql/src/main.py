@@ -59,7 +59,7 @@ def main():
 
     llm_type = st.selectbox("LLM Type", [GPT_LLM, LOCAL_LLM])
     debug_info = st.sidebar.empty()
-    if prompt := st.chat_input("where is address of the office in San Francisco?"):
+    if prompt := st.chat_input("Where is the office in San Francisco?"):
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)

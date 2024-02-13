@@ -1,7 +1,8 @@
 #!/bin/bash
 set -e -u
 
-CONFIG_FILE="conf/config.json"
+CUR_PATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+CONFIG_FILE="${CUR_PATH}/conf/config.json"
 
 find_settings() {
     local file_path="$1"
@@ -56,5 +57,4 @@ else
         docker exec text2sql_ollama_1 sh -c "ollama run $GPU_LLM --verbose"
     fi
 fi
-set +e +u
-
+docker ps -a | grep text2sql

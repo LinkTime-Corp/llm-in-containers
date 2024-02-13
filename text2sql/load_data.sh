@@ -1,7 +1,9 @@
-!/bin/bash
+#!/bin/bash
 set -e -u
 
-CONFIG_FILE="conf/config.json"
+CUR_PATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+CONFIG_FILE="${CUR_PATH}/conf/config.json"
+DB_PATH="${CUR_PATH}/db"
 
 find_password() {
     local file_path="$1"
@@ -20,9 +22,4 @@ find_password() {
 
 find_password "$CONFIG_FILE"
 
-rm -rf db
-wget https://www.mysqltutorial.org/wp-content/uploads/2023/10/mysqlsampledatabase.zip -P db
-unzip db/mysqlsampledatabase.zip -d db
-
-docker exec -i text2sql_mysql_1 sh -c "exec mysql -uroot -p$PASSWORD" < db/mysqlsampledatabase.sql
-set +e +u
+docker exec -i text2sql_mysql_1 sh -c "exec mysql -uroot -p$PASSWORD" < $DB_PATH/mysqlsampledatabase.sql
