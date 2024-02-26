@@ -1,5 +1,5 @@
 # Running Text2SQL with LLMs on Docker Containers
-## Oveview
+## Overview
 This demo showcases querying databases through Text2SQL technology, leveraging the advanced features of Large Language Models (LLMs) with the LangChain and Ollama frameworks. Additionally, it explores the deployment of LLM applications using Docker, outlining crucial steps for encapsulating your LLM application in a Docker container. This ensures a consistent and isolated operational environment across different host systems.
 
 ## Prerequisites
