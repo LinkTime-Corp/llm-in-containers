@@ -1,6 +1,6 @@
 # Running PDF Parsers on Docker Containers
 ## Overview
-This demo showcases running different PDF parsers on the same docker container. Three
+This demo showcases running different PDF parsers in the same docker container. Three
 approaches for parsing PDF files are included: [LlmSherpa](https://github.com/nlmatics/llmsherpa), [Unstructured](https://github.com/Unstructured-IO/unstructured), and [LlamaParse](https://github.com/run-llama/llama_parse).
 
 ## Prerequisites
@@ -15,7 +15,7 @@ Before diving into this demo, please ensure that your system meets the following
 
 ## Quick Start
 ### Setup environment on AWS
-Please follow this [README file](../env-setup/aws/ubuntu-22.04/README.md) to setup the demo environment on AWS EC2. Note that, GPU is not needed in this demo, so you can run it on any instance that is installed Docker.
+Please follow this [README file](../env-setup/aws/ubuntu-22.04/README.md) to setup the demo environment on AWS EC2. Note that, GPU is not required in this demo, so you can run it on any instance that is installed Docker.
 
 ### Running the demo
 1. Start by cloning this repo to your instance with Docker installed:
