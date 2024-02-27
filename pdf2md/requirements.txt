@@ -1,0 +1,6 @@
+click==8.1.7
+llmsherpa==0.1.4
+openai==1.11.1
+pydantic==2.6.1
+streamlit==1.30.0
+unstructured[pdf]==0.12.4
