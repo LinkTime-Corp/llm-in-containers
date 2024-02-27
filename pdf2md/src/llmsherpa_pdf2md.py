@@ -11,7 +11,7 @@ NUM_HEADING_PATTERN = r"^(\d+(\.\d+)*)\s+(.*)"
 SECTION_HEADING_PATTERN = r"^SECTION \d+:"
 START_HEADING_LEVEL = 1
 
-LLMSHERPA_API_URL = "https://readers.llmsherpa.com/api/document/developer/parseDocument?renderFormat=all"
+LLMSHERPA_API_URL = "http://nlm-ingestor:5001/api/parseDocument?renderFormat=all"
 
 class LayoutPDFParser(BaseModel):
     class Config:

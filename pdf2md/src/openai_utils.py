@@ -69,14 +69,14 @@ def extract_title(text: str) -> str:
     # get the first 5 lines of the text
     lines = text.split("\n")[:5]
     title_prompt = TITLE_PROMPT.format(text="\n".join(lines))
-    if OPENAI_API_KEY is None:
+    if OPENAI_API_KEY is None or OPENAI_API_KEY == "":
         return lines[0]
     else:
         return query_openai(title_prompt)
 
 def parse_table(table_text: str) -> str:
     chat_prompt = TABLE_PROMPT.format(table_text=table_text)
-    if OPENAI_API_KEY is None:
+    if OPENAI_API_KEY is None or OPENAI_API_KEY == "":
         return table_text
     else:
         return query_openai(chat_prompt)

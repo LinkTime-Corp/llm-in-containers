@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  nlm-ingestor:
+    image: ghcr.io/nlmatics/nlm-ingestor:v0.1.6
+    ports:
+      - "5001:5001"
+  pdf2md:
+    image: pdf2md:1.0
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - LLAMAPARSE_API_KEY=${LLAMAPARSE_API_KEY}
+    ports:
+      - "8501:8501"
+      

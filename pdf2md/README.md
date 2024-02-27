@@ -23,8 +23,10 @@ Please follow this [README file](../env-setup/aws/ubuntu-22.04/README.md) to set
 git clone https://github.com/LinkTime-Corp/llm-in-containers.git
 cd llm-in-containers/pdf2md
 ```
-2. Replace 'your-openai-api-key' and 'your-llamaparse-api-key' with your API keys in the 'run.sh'. Then launch the demo. 
+2. Replace '{your-openai-api-key}' and '{your-llamaparse-api-key}' with your API keys for the following commands. Then launch the demo. 
 ```
+export OPENAI_API_KEY={your-openai-api-key}
+export LLAMAPARSE_API_KEY={your-llamaparse-api-key}
 bash run.sh
 ```
 3. Visit the UI at http://{IP of Host instance}:8501. On the UI, you can choose "LlamaParse", "LlmSherpa", or "Unstructured" to parse the uploaded PDF file.
