@@ -20,7 +20,7 @@ find_model_info() {
 
 find_model_info "$CONFIG_FILE"
 
-if [ "$1" == "-gpu" ]; then
+if [ "${1:-}" == "-gpu" ]; then
     echo "GPU option provided. Running on GPU..."
     sed -i'' -e "s/command:.*/command: $GPU_MODEL_NAME/" docker-compose.yaml
 
